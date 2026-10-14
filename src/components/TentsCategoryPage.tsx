@@ -95,11 +95,9 @@ export const TentsCategoryPage: React.FC = () => {
   };
 
   const handleUpdateFilters = (changed: Partial<FacetFilters>) => {
-    setFilters((prev) => {
-      const updated = { ...prev, ...changed };
-      updateUrlWithFilters(updated);
-      return updated;
-    });
+    const updated = { ...filters, ...changed };
+    setFilters(updated);
+    updateUrlWithFilters(updated);
   };
 
   const handleResetFilters = () => {
@@ -174,14 +172,17 @@ export const TentsCategoryPage: React.FC = () => {
       */}
       <link rel="canonical" href={CANONICAL_URL} />
       <script
+        id="breadcrumb-ldjson"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <script
+        id="itemlist-ldjson"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
       <script
+        id="graph-ldjson"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(entityGraphSchema) }}
       />
